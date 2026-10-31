@@ -1,30 +1,22 @@
-import Panel from './Panel.js';
-import { getImageUrl } from './utils.js';
+import Panel from './Panel';
+import { getImageUrl } from './utils';
+import type { Person } from './App';
 
-let currentPerson;
-
-export default function Profile({ person }) {
-  currentPerson = person;
+export default function Profile({ person }: { person: Person }) {
   return (
     <Panel>
-      <Header />
-      <Avatar />
+      <Header person={person} />
+      <Avatar person={person} />
     </Panel>
-  )
+  );
 }
 
-function Header() {
-  return <h1>{currentPerson.name}</h1>;
+function Header({ person }: { person: Person }) {
+  return <h1>{person.name}</h1>;
 }
 
-function Avatar() {
+function Avatar({ person }: { person: Person }) {
   return (
-    <img
-      className="avatar"
-      src={getImageUrl(currentPerson)}
-      alt={currentPerson.name}
-      width={50}
-      height={50}
-    />
+    <img className="avatar" src={getImageUrl(person)} alt={person.name} width={50} height={50} />
   );
 }
