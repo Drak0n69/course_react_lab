@@ -1,10 +1,3 @@
-import { useState } from 'react';
-
-export default function Clock(props: { time: string, color: string }) {
-  const [color, setColor] = useState(props.color);
-  return (
-    <h1 style={{ color: color }}>
-      {props.time}
-    </h1>
-  );
+export default function Clock({ time, color }: { time: string; color: string }) {
+  return <h1 style={{ color }}>{time}</h1>;
 }
