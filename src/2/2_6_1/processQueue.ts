@@ -1,9 +1,4 @@
-import { Que } from "./App";
-
+export type Que = number | ((n: number) => number);
 export function getFinalState(baseState: number, queue: Que[]) {
-    let finalState = baseState;
-
-    // TODO: do something with the queue...
-
-    return finalState;
+  return queue.reduce<number>((value, next) => typeof next === 'function' ? next(value) : next, baseState);
 }
