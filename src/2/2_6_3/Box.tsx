@@ -36,7 +36,7 @@ export default function Box({
         }
     }
 
-    function handlePointerUp(e: any) {
+    function handlePointerUp() {
         setLastCoordinates(null);
     }
 
