@@ -8,10 +8,14 @@
     inline: 'center',
   });
 */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CatFriends() {
   const [index, setIndex] = useState(0);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
+  useEffect(() => {
+    imageRefs.current[index]?.scrollIntoView?.({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, [index]);
   return (
     <>
       <nav>
@@ -30,6 +34,7 @@ export default function CatFriends() {
           {catList.map((cat, i) => (
             <li key={cat.id}>
               <img
+                ref={node => { imageRefs.current[i] = node; }}
                 className={
                   index === i ?
                     'active' :
