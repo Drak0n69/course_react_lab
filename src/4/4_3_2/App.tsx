@@ -14,7 +14,6 @@ export default function Form() {
   const [show, setShow] = useState(false);
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
-  const [upper, setUpper] = useState(false);
   const name = firstName + ' ' + lastName;
   return (
     <>
@@ -39,7 +38,7 @@ export default function Form() {
               shouldFocus={false}
             />
           </label>
-          <p>Hello, <b>{upper ? name.toUpperCase() : name}</b></p>
+          <p>Hello, <b>{name}</b></p>
         </>
       )}
     </>
