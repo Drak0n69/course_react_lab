@@ -1,10 +1,4 @@
-import { PlaceType } from "./data";
-
-export function getImageUrl(place: PlaceType) {
-    return (
-      'https://i.imgur.com/' +
-      place.imageId +
-      'l.jpg'
-    );
-  }
-  
+type PersonWithImage = { imageId: string };
+export function getImageUrl(person: PersonWithImage) {
+  return 'https://i.imgur.com/' + person.imageId + 'l.jpg';
+}
