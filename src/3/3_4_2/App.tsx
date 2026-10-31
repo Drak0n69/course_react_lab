@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 export default function App() {
   const [reverse, setReverse] = useState(false);
-  let checkbox = (
+  const checkbox = (
     <label>
       <input
         type="checkbox"

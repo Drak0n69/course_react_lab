@@ -27,14 +27,14 @@ export default function App() {
   }
 
   function getRandomLightColor() {
-    let r = 150 + Math.round(100 * Math.random());
-    let g = 150 + Math.round(100 * Math.random());
-    let b = 150 + Math.round(100 * Math.random());
+    const r = 150 + Math.round(100 * Math.random());
+    const g = 150 + Math.round(100 * Math.random());
+    const b = 150 + Math.round(100 * Math.random());
     return `rgb(${r}, ${g}, ${b})`;
   }
 
   function handleChangeColor() {
-    let bodyStyle = document.body.style;
+    const bodyStyle = document.body.style;
     bodyStyle.backgroundColor = getRandomLightColor();
   }
 

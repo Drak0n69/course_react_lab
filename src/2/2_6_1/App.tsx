@@ -18,14 +18,14 @@ export default function Scoreboard() {
         setPlayer(p => ({ ...p, score: p.score + 1 }));
     }
 
-    function handleFirstNameChange(e: any) {
+    function handleFirstNameChange(e: React.ChangeEvent<HTMLInputElement>) {
         setPlayer({
             ...player,
             firstName: e.target.value,
         });
     }
 
-    function handleLastNameChange(e: any) {
+    function handleLastNameChange(e: React.ChangeEvent<HTMLInputElement>) {
         setPlayer(p => ({ ...p, lastName: e.target.value }));
     }
 

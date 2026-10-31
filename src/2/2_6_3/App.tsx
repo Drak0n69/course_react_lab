@@ -28,7 +28,7 @@ export default function Canvas() {
         setShape(draft => { draft.position.x += dx; draft.position.y += dy; });
     }
 
-    function handleColorChange(e: any) {
+    function handleColorChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setShape(draft => { draft.color = e.target.value; });
     }
 

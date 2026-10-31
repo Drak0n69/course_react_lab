@@ -15,7 +15,7 @@ export default function MyInput(
   // TODO: call focus() only if shouldFocus is true.
   useEffect(() => {
     if (shouldFocus) ref.current?.focus();
-  }, []);
+  }, [shouldFocus]);
 
   return (
     <input

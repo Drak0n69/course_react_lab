@@ -17,7 +17,7 @@ export default function Gallery() {
     }
   }
 
-  let image = images[index];
+  const image = images[index];
   return (
     <>
       <button onClick={handleClick}>
@@ -34,7 +34,7 @@ export default function Gallery() {
   );
 }
 
-let images = [{
+const images = [{
   place: 'Penang, Malaysia',
   src: 'FJeJR8M.jpg'
 }, {

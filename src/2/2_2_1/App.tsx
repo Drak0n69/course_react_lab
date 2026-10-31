@@ -25,7 +25,7 @@ export default function Gallery() {
         setShowMore(!showMore);
     }
 
-    let sculpture = sculptureList[index];
+    const sculpture = sculptureList[index];
     return (
         <>
             <button onClick={handlePreviousClick} disabled={index === 0}>Previous</button>

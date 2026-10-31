@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  test: {
+  ...{ test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
@@ -13,5 +13,5 @@ export default defineConfig({
     typecheck: {
       tsconfig: './tsconfig.test.json',
     },
-  },
+  } },
 })

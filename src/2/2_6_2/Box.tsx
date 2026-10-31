@@ -16,15 +16,15 @@ export default function Box({
         null
     );
 
-    function handlePointerDown(e: any) {
-        e.target.setPointerCapture(e.pointerId);
+    function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {
+        e.currentTarget.setPointerCapture(e.pointerId);
         setLastCoordinates({
             x: e.clientX,
             y: e.clientY,
         });
     }
 
-    function handlePointerMove(e: any) {
+    function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
         if (lastCoordinates) {
             setLastCoordinates({
                 x: e.clientX,
