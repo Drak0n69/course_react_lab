@@ -13,7 +13,7 @@ function ColorSwitch({
   onChangeColor: () => void
 }) {
   return (
-    <button>
+    <button onClick={event => { event.stopPropagation(); onChangeColor(); }}>
       Change color
     </button>
   );
@@ -45,22 +45,5 @@ export default function App() {
       <br />
       <h2>Clicks on the page: {clicks}</h2>
     </div>
-  );
-}
-
-import { useState } from "react";
-
-function ColorSwitch({
-  onChangeColor
-}: {
-  onChangeColor: () => void
-}) {
-  return (
-    <button onClick={(e) => {
-      e.stopPropagation(); // Останавливаем всплытие события
-      onChangeColor();     // Вызываем переданный обработчик
-    }}>
-      Change color
-    </button>
   );
 }
