@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Item } from './App';
 
 export default function PackingList({
