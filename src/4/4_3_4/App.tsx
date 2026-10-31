@@ -16,9 +16,11 @@ export default function Page() {
 
   useEffect(() => {
     setBio(null);
+    let ignore = false;
     fetchBio(person).then(result => {
-      setBio(result);
+      if (!ignore) setBio(result);
     });
+    return () => { ignore = true; };
   }, [person]);
 
   return (
