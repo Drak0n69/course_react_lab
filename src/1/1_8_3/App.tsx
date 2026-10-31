@@ -16,14 +16,11 @@ export default function Wrapper(){
 }
 
  function StoryTray({ stories }: { stories: Story[] }) {
-  stories.push({
-      id: 'create',
-      label: 'Create Story',
-  });
+  const allStories = [...stories, { id: 'create', label: 'Create Story' }];
 
   return (
       <ul>
-          {stories.map((story) => (
+          {allStories.map((story) => (
               <li key={story.id}>{story.label}</li>
           ))}
       </ul>
