@@ -1,15 +1,16 @@
-// 3_1_3 Refactor the imperative solution without React
-/*
-    В проекте приведена форма, реализованная на чистом JavaScript.
+import { useState } from 'react';
 
-    Эта форма переключается между двумя режимами: в режиме редактирования вы видите вводимые данные, а в режиме просмотра - только результат. Метка кнопки меняется между "Редактировать" и "Сохранить" в зависимости от того, в каком режиме вы находитесь. Когда вы изменяете вводимые данные, приветственное сообщение внизу обновляется в режиме реального времени.
-
-    Представьте, что React не существует. Можете ли вы переделать код в index.js таким образом, чтобы сделать логику менее хрупкой и более похожей на версию React? Как бы это выглядело, если бы состояние было явным, как в React?
-*/
-
-
+// React-версия для проверки ожидаемого поведения исходного DOM-примера.
 export default function EditProfile() {
-    return (
-        <div></div>
-    );
+  const [isEditing, setIsEditing] = useState(false);
+  const [firstName, setFirstName] = useState('Jane');
+  const [lastName, setLastName] = useState('Jacobs');
+  return (
+    <form onSubmit={e => { e.preventDefault(); setIsEditing(v => !v); }}>
+      <label>Имя: {' '}{isEditing ? <input value={firstName} onChange={e => setFirstName(e.target.value)} /> : <b>{firstName}</b>}</label>
+      <label>Фамилия: {' '}{isEditing ? <input value={lastName} onChange={e => setLastName(e.target.value)} /> : <b>{lastName}</b>}</label>
+      <button type="submit">{isEditing ? 'Сохранить' : 'Редактировать'}</button>
+      <p><i>Привет, {firstName} {lastName}!</i></p>
+    </form>
+  );
 }

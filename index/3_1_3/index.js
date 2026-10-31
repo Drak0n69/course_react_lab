@@ -1,53 +1,24 @@
-function handleFormSubmit(e) {
-    e.preventDefault();
-    if (editButton.textContent === 'Edit Profile') {
-      editButton.textContent = 'Save Profile';
-      hide(firstNameText);
-      hide(lastNameText);
-      show(firstNameInput);
-      show(lastNameInput);
-    } else {
-      editButton.textContent = 'Edit Profile';
-      hide(firstNameInput);
-      hide(lastNameInput);
-      show(firstNameText);
-      show(lastNameText);
-    }
-  }
-  
-  function handleFirstNameChange() {
-    firstNameText.textContent = firstNameInput.value;
-    helloText.textContent = (
-      'Hello ' +
-      firstNameInput.value + ' ' +
-      lastNameInput.value + '!'
-    );
-  }
-  
-  function handleLastNameChange() {
-    lastNameText.textContent = lastNameInput.value;
-    helloText.textContent = (
-      'Hello ' +
-      firstNameInput.value + ' ' +
-      lastNameInput.value + '!'
-    );
-  }
-  
-  function hide(el) {
-    el.style.display = 'none';
-  }
-  
-  function show(el) {
-    el.style.display = '';
-  }
-  
-  let form = document.getElementById('form');
-  let editButton = document.getElementById('editButton');
-  let firstNameInput = document.getElementById('firstNameInput');
-  let firstNameText = document.getElementById('firstNameText');
-  let lastNameInput = document.getElementById('lastNameInput');
-  let lastNameText = document.getElementById('lastNameText');
-  let helloText = document.getElementById('helloText');
-  form.onsubmit = handleFormSubmit;
-  firstNameInput.oninput = handleFirstNameChange;
-  lastNameInput.oninput = handleLastNameChange;
+// Вариант без React: одно состояние и общая функция отображения.
+const form = document.getElementById('form');
+const editButton = document.getElementById('editButton');
+const firstNameInput = document.getElementById('firstNameInput');
+const lastNameInput = document.getElementById('lastNameInput');
+const firstNameText = document.getElementById('firstNameText');
+const lastNameText = document.getElementById('lastNameText');
+const helloText = document.getElementById('helloText');
+const state = { editing: false, firstName: firstNameInput.value, lastName: lastNameInput.value };
+
+function render() {
+  editButton.textContent = state.editing ? 'Save Profile' : 'Edit Profile';
+  firstNameInput.style.display = state.editing ? '' : 'none';
+  lastNameInput.style.display = state.editing ? '' : 'none';
+  firstNameText.style.display = state.editing ? 'none' : '';
+  lastNameText.style.display = state.editing ? 'none' : '';
+  firstNameText.textContent = state.firstName;
+  lastNameText.textContent = state.lastName;
+  helloText.textContent = `Hello ${state.firstName} ${state.lastName}!`;
+}
+form.addEventListener('submit', e => { e.preventDefault(); state.editing = !state.editing; render(); });
+firstNameInput.addEventListener('input', e => { state.firstName = e.target.value; render(); });
+lastNameInput.addEventListener('input', e => { state.lastName = e.target.value; render(); });
+render();
