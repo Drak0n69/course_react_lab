@@ -12,11 +12,10 @@ import Letter from './Letter.js';
 
 export default function MailClient() {
     const [letters, setLetters] = useState(initialLetters);
-    const [highlightedLetter, setHighlightedLetter] =
-        useState<LetterType | null>(null);
+    const [highlightedId, setHighlightedId] = useState<number | null>(null);
 
     function handleHover(letter: LetterType) {
-        setHighlightedLetter(letter);
+        setHighlightedId(letter.id);
     }
 
     function handleStar(starred: LetterType) {
@@ -41,7 +40,7 @@ export default function MailClient() {
                         key={letter.id}
                         letter={letter}
                         isHighlighted={
-                            letter === highlightedLetter
+                            letter.id === highlightedId
                         }
                         onHover={handleHover}
                         onToggleStar={handleStar}
