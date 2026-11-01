@@ -13,7 +13,7 @@ function SearchBar({ query, onQueryChange }: { query: string; onQueryChange: (qu
 }
 
 function List({ items }: { items: Item[] }) {
-  return <table><tbody>{items.map(food =>
+  return <table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>{items.map(food =>
     <tr key={food.id}><td>{food.name}</td><td>{food.description}</td></tr>
   )}</tbody></table>;
 }
