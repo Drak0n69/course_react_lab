@@ -8,23 +8,22 @@
     inline: 'center',
   });
 */
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function CatFriends() {
   const [index, setIndex] = useState(0);
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
-  useEffect(() => {
-    imageRefs.current[index]?.scrollIntoView?.({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }, [index]);
   return (
     <>
       <nav>
         <button onClick={() => {
-          if (index < catList.length - 1) {
-            setIndex(index + 1);
-          } else {
-            setIndex(0);
-          }
+          const nextIndex = (index + 1) % catList.length;
+          setIndex(nextIndex);
+          imageRefs.current[nextIndex]?.scrollIntoView?.({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center',
+          });
         }}>
           Next
         </button>
