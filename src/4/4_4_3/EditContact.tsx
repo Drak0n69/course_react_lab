@@ -8,6 +8,16 @@ export default function EditContact({
   savedContact: ContactType;
   onSave: (updatedData: ContactType) => void;
 }) {
+  return <ContactForm key={savedContact.id} savedContact={savedContact} onSave={onSave} />;
+}
+
+function ContactForm({
+  savedContact,
+  onSave,
+}: {
+  savedContact: ContactType;
+  onSave: (updatedData: ContactType) => void;
+}) {
   const [name, setName] = useState(savedContact.name);
   const [email, setEmail] = useState(savedContact.email);
 

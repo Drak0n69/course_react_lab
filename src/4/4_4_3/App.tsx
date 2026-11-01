@@ -42,7 +42,6 @@ export default function ContactManager() {
       />
       <hr />
       <EditContact
-        key={selectedId}
         savedContact={selectedContact!}
         onSave={handleSave}
       />
